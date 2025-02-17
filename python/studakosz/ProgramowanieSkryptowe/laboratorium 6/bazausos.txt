@@ -1,4 +1,0 @@
-Historia | Nowak_Janusz : 3.5 , 2.5 | Pawlak_Basia : 4.0 , 5.0 | Kowalski_Jan : 3.5
-Geografia | Nowak_Janusz : 3.5 , 2.5 | Pawlak_Basia : 4.0 , 5.0
-Fizyka | Nowak_Janusz : 3.5 , 2.5 | Pawlak_Basia : 4.0 , 5.0
-Matematyka | Kowalski_Jan : 3.5 | Nowak_Anna : 3.5

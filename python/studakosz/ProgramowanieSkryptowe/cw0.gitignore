@@ -1,8 +1,0 @@
-2 + 2
-2 + 2.0
-2 + '2'
-'2' + '2'
-zmienna = 2
-type(zmienna)
-zmienna = '2'
-type(zmienna)

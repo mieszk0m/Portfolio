@@ -1,3 +1,0 @@
-historia | Janusz_Nowak : 3.5 , 2.5 | Basia_Pawlak  : 4.0 , 5.0
-geografia | Janusz_Nowak : 3.5 , 2.5 | Basia_Pawlak  : 4.0 , 5.0
-fizyka | Janusz_Nowak : 3.5 ,  2.5 | Basia_Pawlak  : 4.0 , 5.0
