@@ -13,7 +13,7 @@ W tym katalogu znajdują się implementacje różnych algorytmów kryptograficzn
 
 ### **🔹 Kryptografia modularna i teoria liczb**
 - **`klasaZn.py`** – Arytmetyka modularna w pierścieniach `Zn`.
-- **`krypto 10.08.2024.py`** – Znajdowanie pierwiastków pierwotnych i operacje modularne.
+- **`operacje.py`** – Znajdowanie pierwiastków pierwotnych i operacje modularne.
 
 ### **🔹 Szyfrowanie i ataki na szyfry**
 - **`szyfr cezara.py`** – Implementacja klasycznego szyfru Cezara.
@@ -28,7 +28,7 @@ W tym katalogu znajdują się implementacje różnych algorytmów kryptograficzn
 ---
 
 ## 📖 Dokumentacja
-📄 **Kryptografia.pdf** – Dokumentacja kryptosystemu GGH i jego matematycznych podstaw.
+📄 **GGH.pdf** – Dokumentacja kryptosystemu GGH i jego matematycznych podstaw.
 
 ---
 
