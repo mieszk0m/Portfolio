@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uproszczony USOS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<div class="top-bar">
+    <i class="fas fa-icon-name"></i>
+    <div><strong>Wyższa Szkoła Informatyki     </strong> </div>
+    <div><span>Studia <span class="arrow-down"></span></span></div>
+    <div class="search-area">
+        <label for="search">Szukaj:</label>
+        <input type="text" id="search" name="search">
+    </div>
+    <div>USOS</div>
+</div>
+<div class="container">
+    <div class="block block1">
+        <h2>Oferty zatrudnienia</h2>
+        <img src="oferty.jpg" alt="Oferty zatrudnienia">
+        <ul style="list-style-type: none; padding: 0;">
+            <li><span style="color: black;">•</span> <a href="https://www.google.com" style="color: #2f88e8; text-decoration: underline;">Google</a></li>
+            <li><span style="color: black;">•</span> <a href="https://www.ibm.com" style="color: #007bff; text-decoration: underline;">IBM</a></li>
+        </ul>
+        <button style="background-color: black; color: white; border: none; padding: 10px 20px; cursor: pointer; margin-top: 20px; position: relative; bottom: 20px;">Pozostałe oferty</button>
+    </div>
+    <div class="block block2">
+        <h2>Kierunki</h2>
+        <img src="kierunki.jpg" alt="Kierunki">
+        <!-- Tabela dodana tutaj -->
+        <table style="width:100%; margin-top: 20px;">
+            <tr style="background-color: #004080; color: white;">
+                <th>Kierunek</th>
+                <th>Czesne</th>
+            </tr>
+            <tr style="background-color: #e0e0e0;">
+                <td>Informatyka</td>
+                <td>3000 zł / semestr</td>
+            </tr>
+            <tr style="background-color: #e0e0e0;">
+                <td>Kryptografia</td>
+                <td>5000 zł / semestr</td>
+            </tr>
+        </table>
+    </div>
+    <div class="block block3">
+        <h2>Zaplecze dydaktyczne</h2>
+        <img src="zajecia.jpg" alt="Zaplecze dydaktyczne">
+        <p>Budynek został wyposażon w wysokiej klasy systemy telekonferencyjne. W czterech salach zostały zainstalowane urządzenie (C40 oraz C60) firmy TANDBERG umożliwiające przetwarzanie, kodowanie i przesyłanie obrazyu w rozdzielczości 1080HD. W jednej z sal zainstalowano system Telepresence Dual 52.</p>
+    </div>
+    <div class="block-primary block4">
+        <h2>USOS CLI</h2>
+        <p>
+            <input type="text" placeholder="Wpisz komendę..." id="console_input">
+            <button id="console_submit">Wyślij</button>
+        </p>
+    </div>
+</div>
+
+<footer style="display: flex; justify-content: space-between; padding: 20px; box-sizing: border-box;">
+    <div style="width: 33%;">
+        Adres siedziby:<br>
+        Wyższa Szkoła Informatyki<br>
+        dziekanat@wsi.krakow.pl<br>
+        ul. Jana Bieleckiego 1<br>
+        30-836 Kraków
+    </div>
+    <div style="width: 33%; text-align: center;">
+        Kontakt:<br>
+        <a href="mailto:dziekanat@wsi.krakow.pl" style="color: #007bff;">dziekanat@wsi.krakow.pl</a><br>
+        <a href="tel:+48555666777" style="color: #007bff;">+48 555-666-777</a>
+    </div>
+    <div style="width: 33%; text-align: right;">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter" style="color: #007bff; margin-right: 10px;"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f" style="color: #007bff;"></i></a>
+    </div>
+</footer>
+<script src="classes.js"></script>
+<script>
+
+    function displayError(message) {
+        console.error("W czasie działania aplikacji wystąpił błąd!",message);
+    }
+
+
+    let request = window.indexedDB.open("USOSdata", 5);
+    request.onupgradeneeded = event =>{
+        let db = event.target.result;
+        let objectStore = db.createObjectStore("USOSdata");
+
+        const students = [
+            new Student(1, "Kosakowski", "Ziemowit"),
+            new Student(2, "Makowski", "Mieszko"),
+            new Student(3, "Konieczny", "Filip")];
+
+        const matematyka = new Subject("Matematyka", 4, "Epikurus Epikurejczyk");
+        const fizyka = new Subject("Fizyka", 4, "Albertus Einsztejn");
+        const historia = new Subject("Historia", 4, "Janusz Januszowy");
+        matematyka.students[3] = ["4.0"];
+        matematyka.students[2] = ["5.0", "3.5"];
+        matematyka.students[1] = ["2.0"];
+
+        fizyka.students[3] = ["4.0", "5.0", "3.5"];
+        fizyka.students[2] = ["2.0"];
+
+        historia.students[2] = ["5.0", "3.5"];
+        historia.students[1] = ["3.0", "5.0"];
+        const lista_przedmiotow = [historia, fizyka, matematyka];
+        const lista_ocen = [];
+        let ostatnio_dodawany = 3;
+        for (const przedmiot of lista_przedmiotow) {
+            for (const studentId in przedmiot.students) {
+                const studentData = przedmiot.students[studentId];
+
+                for (const ocena of studentData) {
+                    lista_ocen.push(new Grade(parseInt(studentId), przedmiot, ocena));
+                }
+            }
+        }
+        objectStore.put(lista_przedmiotow, "lista_przedmiotow");
+        objectStore.put(lista_ocen, "lista_ocen");
+        objectStore.put(students, "lista_studentow");
+    }
+
+
+    request.onerror = displayError;
+
+    let CliInput = document.getElementById('console_input');
+    let CliSubmit = document.getElementById('console_submit');
+
+    CliSubmit.addEventListener('click',przyjmijKomende)
+
+    function przyjmijKomende() {
+        let request = window.indexedDB.open("USOSdata", 5);
+        request.onsuccess = event => {
+            let db = event.target.result;
+            const objectStore = db.transaction('USOSdata','readwrite').objectStore('USOSdata');
+            // Make a request to add our newItem object to the object store
+            objectStore.get('lista_ocen').onsuccess = lista_ocen =>{
+                objectStore.get('lista_przedmiotow').onsuccess = lista_przedmiotow =>{
+                    objectStore.get('lista_studentow').onsuccess = lista_studentow => {
+                        let przedmioty = lista_przedmiotow.target.result;
+                        let oceny = lista_ocen.target.result;
+                        let studenci = lista_studentow.target.result;
+                        let USOS = new Usos(przedmioty, oceny,studenci);
+
+                        let komenda = CliInput.value;
+                        if(komenda.length < 3) {
+                            console.error("Podaj komendę");
+                            return;
+                        }
+
+                        // if(komenda == "subjects") {
+                        //     console.log(JSON.stringify(USOS.subjects));
+                        // }
+                        // if(komenda == "students") {
+                        //     let res = '';
+                        //     for(let student of USOS.students) {
+                        //         res += `${student.id} ${student.imie} ${student.nazwisko}\n`
+                        //     }
+                        //     console.log(res);
+                        // }
+
+                        if(komenda.indexOf("przedmiot") !== -1) {
+                            let subjectName = komenda.split(' ')[1];
+                            if(!subjectName || subjectName.length < 2) displayError('ERR przy nazwie subjectu');
+                            USOS.wykazDlaPrzedmiotu(subjectName);
+                        }
+                        if(komenda.indexOf("student") !== -1) {
+                            let studentId = komenda.split(' ')[1];
+                            if(!studentId) displayError('ERR przy ID studenta');
+                            USOS.wykazOcenStudentaOId(parseInt(studentId));
+                        }
+
+
+                        if(komenda.indexOf("add ") !== -1) {
+                            const [_, index, przedmiot, ocena] = komenda.split(" ");
+                            USOS.dodajOcene(parseInt(index), przedmiot, ocena);
+                        }
+                        if(komenda.indexOf("remove ") !== -1) {
+                            const [_, index, przedmiot, ocena] = komenda.split(" ");
+                            USOS.usunOcene(parseInt(index), przedmiot, ocena);
+                        }
+
+                        objectStore.put(USOS.subjects, "lista_przedmiotow");
+                        objectStore.put(USOS.grades, "lista_ocen");
+                        objectStore.put(USOS.students, "lista_studentow");
+
+
+
+                    }
+                }
+            }
+        };
+        request.onerror = displayError;
+
+    }
+
+
+</script>
+</body>
+</html>
