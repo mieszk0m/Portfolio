@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Uproszczony USOS</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="top-bar">
+      <i class="fas fa-icon-name"></i>
+      <div><strong>Wyższa Szkoła Informatyki </strong></div>
+      <div>
+        <span>Studia <span class="arrow-down"></span></span>
+      </div>
+      <div class="search-area">
+        <label for="search">Szukaj:</label>
+        <input type="text" id="search" name="search" />
+      </div>
+      <div>USOS</div>
+    </div>
+    <div class="container">
+      <div class="block-primary block4" style="color: white">
+        <h2>USOS Nowy Student Formularz</h2>
+        <form class="form-inline form-dark" id="student_form">
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="input_imie" class="sr-only">Imię</label>
+            <input
+              type="text"
+              class="form-control"
+              id="input_imie"
+              placeholder="Imię"
+            />
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="input_nazwisko" class="sr-only">Nazwisko</label>
+            <input
+              type="text"
+              class="form-control"
+              id="input_nazwisko"
+              placeholder="Nazwisko"
+            />
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="input_zdjecie" class="sr-only">URL zdjęcia</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="input_zdjecie"
+                    placeholder="URL zdjęcia..."
+            />
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">
+            Dodaj użytkownika
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer
+      style="
+        justify-content: space-between;
+        padding: 20px;
+        box-sizing: border-box;
+      "
+    >
+      <div style="width: 33%">
+        Adres siedziby:<br />
+        Wyższa Szkoła Informatyki<br />
+        dziekanat@wsi.krakow.pl<br />
+        ul. Jana Bieleckiego 1<br />
+        30-836 Kraków
+      </div>
+      <div style="width: 33%; text-align: center">
+        Kontakt:<br />
+        <a href="mailto:dziekanat@wsi.krakow.pl" style="color: #007bff"
+          >dziekanat@wsi.krakow.pl</a
+        ><br />
+        <a href="tel:+48555666777" style="color: #007bff">+48 555-666-777</a>
+      </div>
+      <div style="width: 33%; text-align: right">
+        <a href="https://twitter.com" target="_blank"
+          ><i
+            class="fab fa-twitter"
+            style="color: #007bff; margin-right: 10px"
+          ></i
+        ></a>
+        <a href="https://facebook.com" target="_blank"
+          ><i class="fab fa-facebook-f" style="color: #007bff"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="classes.js"></script>
+    <script>
+    let form = document.getElementById('student_form');
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+
+      let formData = {
+        imie:document.getElementById('input_imie').value,
+        nazwisko:document.getElementById('input_nazwisko').value,
+        photo:document.getElementById('input_zdjecie').value,
+      }
+
+      await fetch('/add',{
+        method:"POST",
+        body:JSON.stringify(formData)
+      })
+
+
+
+    })
+
+
+    </script>
+  </body>
+</html>
