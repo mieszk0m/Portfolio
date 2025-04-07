@@ -1,41 +1,57 @@
 # Cybersecurity Portfolio - Mieszko Makowski  
-👋 Cześć! Jestem studentem 6. semestru Cyberbezpieczeństwa na AGH.  
-Interesuję się bezpieczeństwem sieci, analizą i automatyzacją.  
+👋 Cześć!   Jestem studentem 6. semestru Cyberbezpieczeństwa na AGH. W mojej pracy koncentruję się na bezpieczeństwie systemów, analizie zagrożeń, projektowaniu funkcjonalnych rozwiązań backendowych oraz tworzeniu praktycznych narzędzi.  
 
-## 🔥 Projekty
+## 📚 Projekty
 
-SQL
+### 🧩 Kryptografia i bezpieczeństwo
 
+- [`GGH`](./GGH)  
+  Implementacja kryptosystemu GGH oraz ataku LLL w Pythonie. Kod + dokumentacja algorytmu kratowego.
 
+- [`Plan Ochrony Informacji Niejawnych w AGH-D17`](./Plan_Ochrony)  
+  Dokument zgodny z obowiązującymi przepisami, opisujący organizacyjne i techniczne środki ochrony.
 
-Funkccjonalny
+- [`Analiza porównawcza mechanizmów uwierzytelniania`](./CBZ_Transakcje)  
+  Projekt w ramach CBZ – model zagrożeń, ścieżka klienta, warstwa logiczna i rekomendacje bezpieczeństwa.
 
-- Na wzór działania Usos
-- Frontend HTML
-- Backend Python
-- Funkcje
+- [`Analiza Malware`](./MalwareAnalysis)  
+  Raport przedstawiający rodzaje malware, metody ataków i techniki analizy (statyczna/dynamiczna).
 
-Opracowanie kryptosystemu GGH
-- dokumentacji przedstawiające działanie krytposystemu
-- implementacjia szyfrowania (Python)
-- impplementacja deszyfrowania (Python)
-- implementacja ataku LLL pokazującego słabość kryptosystemu (Python)
+### 🧠 Backend i systemy informatyczne
 
+- [`System USOS – Python`](./USOS)  
+  Rozbudowana symulacja systemu ocen i zarządzania studentami (CRUD, role, dane, przeszukiwanie, plikowa baza).
 
-Strona internetowa Talent IT
+- [`System Rezerwacji Wycieczek – SQL`](./SQL_Rezerwacje)  
+  Relacyjna baza danych z widokami, procedurami, triggerami i dokumentacją.
 
-Analiza porównawcza mechanizmów uwierzytelniania
+- [`Zwirtualizowane środowisko`](./Projekt_Wirtualizacja)  
+  Projekt sieciowego środowiska testowego do symulacji i edukacji z zakresu cyberbezpieczeństwa.
 
+### 🤖 Sztuczna inteligencja / Symulacje
 
+- [`MountainCar`](./MountainCar)  
+  Model fizyki ruchu samochodu w środowisku AI + prezentacja logiczna i wykresy wyników.
 
+### 🌐 Projekt Webowy (z ograniczonym dostępem do kodu)
 
-## 🛠 Technologie
-- 🖥 **Systemy**: Linux (Ubuntu, Kali), Windows Server
-- 🛡 **Bezpieczeństwo**: Snort, Suricata, Wireshark, Nmap, Metasploit
-- 📡 **Sieci**: VLAN, VPN, Cisco
-- 💻 **Kodowanie**: Python, Bash, PowerShell
-- ☁ **Chmura**: AWS, Azure (podstawy)
+- [`Aplikacja Webowa – system komunikacji wewnętrznej`](./WebApp_Opis)  
+  Projekt webowy zrealizowany z użyciem **Git, HTML, Java i Postmark**.  
+  Z powodów bezpieczeństwa kod nie jest publiczny – w folderze znajduje się opis funkcjonalności.
 
-📫 **Kontakt:**  
-- LinkedIn: (https://pl.linkedin.com/in/mieszko-makowski-41ab501b2)
-- Email: makowskimieszko6@gmail.com
+## 🧰 Technologie
+
+- **Języki:** Python, JavaScript (Node.js), SQL, Bash
+- **Bazy danych:** PostgreSQL, MSSQL, SQLite
+- **Sieci i bezpieczeństwo:** Nmap, Wireshark, Metasploit, Snort, Suricata
+- **Systemy operacyjne:** Linux (Ubuntu, Kali), Windows Server
+- **Narzędzia:** Git, Docker, VirtualBox, Express, MongoDB, Flask
+
+---
+
+## 📬 Kontakt
+
+- **E-mail:** makowskimieszko6@gmail.com  
+- **LinkedIn:** [linkedin.com/in/mieszko-makowski-41ab501b2](https://linkedin.com/in/mieszko-makowski-41ab501b2)
+
+*Dziękuję za poświęcony czas i zapraszam do zapoznania się z wybranymi projektami.*
