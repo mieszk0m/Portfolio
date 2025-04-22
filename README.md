@@ -28,7 +28,7 @@
 - [`Zwirtualizowane środowisko`](./Projekt_Wirtualizacja)  
   Projekt sieciowego środowiska testowego do symulacji i edukacji z zakresu cyberbezpieczeństwa.
 
-### 🤖 Sztuczna inteligencja / Symulacje
+### 🤖 Uczenie maszynowe / Sztuczna inteligencaj / Symulacje
 
 - [`MountainCar`](./MountainCar)  
   Model fizyki ruchu samochodu w środowisku AI + prezentacja logiczna i wykresy wyników.
