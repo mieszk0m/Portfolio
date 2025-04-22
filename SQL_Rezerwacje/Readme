@@ -1,0 +1,106 @@
+# 🗄️ System Rezerwacji Wycieczek – Projekt Bazy Danych
+
+Kompleksowy system rezerwacji wycieczek z wykorzystaniem **SQL** i **procedur składowanych**, który obsługuje klientów indywidualnych oraz firmowych, rezerwacje wycieczek, dodatkowych usług i atrakcji, płatności oraz zarządzanie pracownikami. Projekt powstał w ramach kursu **Bazy Danych** na AGH.
+
+---
+
+## 📂 Struktura projektu
+
+```
+SQL_Reservation_System/
+├── schema.sql               # Definicje tabel i relacji (DDL)
+├── views.sql                # Definicje widoków (raporty, statystyki)
+├── procedures.sql           # Procedury składowane
+├── triggers.sql             # Triggery do automatyzacji logiki biznesowej
+├── test_data.sql            # Wstawianie przykładowych danych
+└── README.md                # Instrukcja i opis projektu
+```
+
+---
+
+## 📝 Opis kluczowych komponentów
+
+### 1. `schema.sql`
+- Tworzy **29 tabel** z relacjami (PK, FK, UNIQUE, CHECK):
+  - Kluczowe encje: `Clients`, `Companies`, `Employees`, `Tours`, `Orders`, `Payments`, `Services`, `Attractions`
+  - Tabele łącznikowe: `Order_Participants`, `Order_Attractions`, `Order_Services`, `Employees_Tours` itd.
+  - Warunki integralności: poprawność emaili, numerów telefonów, adresów, NIP/REGON
+
+### 2. `views.sql`
+- Widoki umożliwiające raportowanie i analizę danych:
+  - **OrderFinalPrice** – oblicza ostateczną cenę zamówienia
+  - **Top3Tours** – najczęściej wybierane wycieczki
+  - **Pending_Payments** – zamówienia oczekujące płatności
+  - **Available_Tour_Spots** – dostępność miejsc na wycieczkach
+  - **Client_Order_History** – historia zamówień klientów
+
+### 3. `procedures.sql`
+- Procedury automatyzujące operacje na danych:
+  - **AddParticipantToOrder** – dodanie uczestnika do zamówienia
+  - **CheckAndUpdateOrderStatus** – aktualizacja statusu zamówienia po wpłacie
+  - **CheckAndCancelUnpaidOrders** – anulowanie nieopłaconych zamówień na tydzień przed wycieczką
+
+### 4. `triggers.sql`
+- Triggery zapewniające automatyzację logiki biznesowej:
+  - Ustawianie daty płatności po zmianie statusu zamówienia
+  - Dodanie uczestnika do wycieczki po nowym zamówieniu
+  - Weryfikacja unikalności emaili przed aktualizacją klientów
+  - Automatyczne przypisanie przełożonego dla nowych pracowników
+
+### 5. `test_data.sql`
+- Wstawia dane testowe dla:
+  - Klientów, firm, pracowników
+  - Wycieczek, atrakcji, usług
+  - Zamówień, płatności, uczestników
+
+---
+
+## ⚙️ Wymagania techniczne
+
+- **SQL Server** lub dowolna baza wspierająca T-SQL (np. Azure SQL)
+- Zalecane IDE: **SQL Server Management Studio (SSMS)** lub **Azure Data Studio**
+
+---
+
+## 🚀 Instrukcja uruchomienia
+
+1. Utwórz nową bazę danych (np. `ReservationSystem`).
+2. Wykonaj plik `schema.sql` w celu utworzenia struktury tabel.
+3. Wstaw widoki (`views.sql`), procedury (`procedures.sql`) i triggery (`triggers.sql`).
+4. Dodaj dane testowe uruchamiając `test_data.sql`.
+5. Możesz teraz wykonywać zapytania lub testować działanie systemu:
+   ```sql
+   SELECT * FROM Available_Tour_Spots;
+   EXEC AddParticipantToOrder @OrderID = 1, @ClientID = 2;
+   ```
+
+---
+
+## 📊 Przykładowe zapytania
+
+- Sprawdzenie dostępnych miejsc na wycieczkach:
+  ```sql
+  SELECT * FROM Available_Tour_Spots;
+  ```
+
+- Wygenerowanie raportu cen za zamówienia:
+  ```sql
+  SELECT * FROM OrderFinalPrice;
+  ```
+
+- Historia zamówień klientów:
+  ```sql
+  SELECT * FROM Client_Order_History;
+  ```
+
+---
+
+## 👨‍💻 Autorzy
+
+- **Mieszko Makowski**
+- **Karol Mierzwiński**
+- **Mateusz Wirkijowski**
+- **Patryk Motylski**
+
+Projekt na potrzeby kursu **Bazy Danych**, AGH, 2025.
+
