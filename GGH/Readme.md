@@ -13,10 +13,14 @@ GGH/
 ├── src/
 │   ├── generate_keys.py  # Generowanie klucza publicznego i prywatnego
 │   ├── encrypt.py        # Szyfrowanie wiadomości (m -> c)
-│   └── decrypt.py        # Deszyfrowanie szyfrogramu (c -> m)
+│   ├── decrypt.py        # Deszyfrowanie szyfrogramu (c -> m)
+│   ├── keys.json.py      # Przykładowy plik wejściowy z macierzami
+│   └── attack_lll.py     # Atak LLL na kryptosystem
 ├── tests/
-│   └── test_ggh.py       # Testy jednostkowe sprawdzające poprawność algorytmów
+│   ├── test_ggh.py       # Testy jednostkowe sprawdzające poprawność algorytmów
+│   └── test_lll.py       # Testy jednostkowe sprawdzające skuteczność ataku
 └── README.md             # Opis projektu i instrukcja użytkowania
+
 ```
 
 ---
