@@ -28,8 +28,7 @@ USOS_Simulator/
 │   └── package.json           # Konfiguracja projektu React
 ├── data/
 │   └── sample_data.txt        # Przykładowa baza danych (pliki tekstowe)
-├── README.md                  # Instrukcja i opis projektu
-└── LICENSE                    # Licencja MIT
+└── README.md                  # Instrukcja i opis projektu
 ```
 
 ---
