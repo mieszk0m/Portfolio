@@ -9,8 +9,7 @@ Projekt polegający na wdrożeniu zwirtualizowanego środowiska IT o wysokiej do
 ```
 Virtualization_HA/
 ├── report.pdf             # Szczegółowy opis projektu (konfiguracja, testy HA)
-├── diagrams/
-│   └── architecture.png   # Diagram architektury rozwiązania
+├── diagrams.png           # Diagram architektury rozwiązania
 ├── scripts/
 │   └── iscsi_setup.ps1    # Skrypty konfiguracji iSCSI (PowerShell)
 └── README.md              # Instrukcja i podsumowanie projektu
