@@ -9,8 +9,7 @@ Kompleksowa analiza bezpieczeństwa, funkcjonalności oraz kosztów wdrożenia s
 ```
 Authentication_Analysis/
 ├── Authentication_Mechanisms_Analysis.pdf  # Pełny raport analizy porównawczej
-├── presentation/                           # Folder z prezentacją podsumowującą
-│   └── slides.pdf                          # Slajdy prezentacji projektu
+├── presentation.pdf                        # Slajdy prezentacji projektu
 └── README.md                               # Opis projektu i podsumowanie analizy
 ```
 
@@ -87,5 +86,5 @@ Authentication_Analysis/
 - **Dawid Ryba**
 - **Mikołaj Pacek**
 
-Projekt na potrzeby kursu **Bezpieczne Transakcje Elektroniczne**, AGH, 2025.
+Projekt na potrzeby kursu **Bezpieczeństwo Transakcji Elektronicznych**, AGH, 2025.
 
