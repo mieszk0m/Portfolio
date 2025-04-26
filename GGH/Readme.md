@@ -18,7 +18,7 @@ GGH/
 │   └── attack_lll.py     # Atak LLL na kryptosystem
 ├── tests/
 │   ├── test_ggh.py       # Testy jednostkowe sprawdzające poprawność algorytmów
-│   └── test_lll.py       # Testy jednostkowe sprawdzające skuteczność ataku
+│   └── test_lll.py       # Testy jednostkowe sprawdzające skuteczność ataku LLL
 └── README.md             # Opis projektu i instrukcja użytkowania
 
 ```
