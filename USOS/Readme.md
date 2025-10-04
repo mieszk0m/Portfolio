@@ -102,8 +102,6 @@ Frontend dostępny na `http://localhost:3000`, backend na `http://localhost:8000
 ## 👨‍💻 Autorzy
 
 - **Mieszko Makowski**
-- **Patryk Motylski**
-- **Karol Mierzwiński**
 
 Projekt na potrzeby kursu **Programowanie Skryptowe**, AGH, 2025.
 
