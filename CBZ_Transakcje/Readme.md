@@ -8,7 +8,7 @@ Kompleksowa analiza bezpieczeństwa, funkcjonalności oraz kosztów wdrożenia s
 
 ```
 Authentication_Analysis/
-├── Authentication_Mechanisms_Analysis.pdf  # Pełny raport analizy porównawczej
+├── Analiza porównawcza mechanizmów uwierzytelniania.pdf.pdf  # Pełny raport analizy porównawczej
 ├── presentation.pdf                        # Slajdy prezentacji projektu
 └── README.md                               # Opis projektu i podsumowanie analizy
 ```
