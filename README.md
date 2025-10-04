@@ -1,5 +1,5 @@
 # Cybersecurity Portfolio - Mieszko Makowski  
-👋 Cześć!   Jestem studentem 6. semestru Cyberbezpieczeństwa na AGH. W mojej pracy koncentruję się na bezpieczeństwie systemów, analizie zagrożeń, projektowaniu funkcjonalnych rozwiązań backendowych oraz tworzeniu praktycznych narzędzi.  
+👋 Cześć!   Jestem studentem 7. semestru Cyberbezpieczeństwa na AGH. W mojej pracy koncentruję się na bezpieczeństwie systemów, analizie zagrożeń, projektowaniu funkcjonalnych rozwiązań backendowych oraz tworzeniu praktycznych narzędzi.  
 
 ## 📚 Projekty
 
@@ -44,7 +44,7 @@
 - **Języki:** Python, JavaScript (Node.js), SQL, Bash
 - **Bazy danych:** PostgreSQL, MSSQL, SQLite
 - **Sieci i bezpieczeństwo:** Nmap, Wireshark, Metasploit, Snort, Suricata
-- **Systemy operacyjne:** Linux (Ubuntu, Kali), Windows Server
+- **Systemy operacyjne:** Linux (Ubuntu, Kali), Windows
 - **Narzędzia:** Git, Docker, VirtualBox, Express, MongoDB, Flask
 
 ---
