@@ -17,7 +17,7 @@
 - [`Analiza Malware`](./MalwareAnalysis)  
   Raport przedstawiający rodzaje malware, metody ataków i techniki analizy (statyczna/dynamiczna).
 
-- [`Ternary Hash`](./Ternary Hash)  
+- [`Ternary Hash`](./TernaryHash)  
   Implementacje **SHA‑1** i **SHA‑256** w Pythonie oraz eksperymentalne **warianty ternarne** (tryty) do celów edukacyjnych i porównawczych — padding, rotacje, harmonogram słów; testy wektorów dla wersji binarnych.
 
 ### 🧠 Backend i systemy informatyczne
