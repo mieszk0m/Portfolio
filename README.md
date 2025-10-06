@@ -1,5 +1,5 @@
 # Cybersecurity Portfolio - Mieszko Makowski  
-👋 Cześć!   Jestem studentem 7. semestru Cyberbezpieczeństwa na AGH. W mojej pracy koncentruję się na bezpieczeństwie systemów, analizie zagrożeń, projektowaniu funkcjonalnych rozwiązań backendowych oraz tworzeniu praktycznych narzędzi.  
+👋 Cześć! Jestem studentem 7. semestru Cyberbezpieczeństwa na AGH. W mojej pracy koncentruję się na bezpieczeństwie systemów, analizie zagrożeń, projektowaniu funkcjonalnych rozwiązań backendowych oraz tworzeniu praktycznych narzędzi.
 
 ## 📚 Projekty
 
@@ -17,6 +17,9 @@
 - [`Analiza Malware`](./MalwareAnalysis)  
   Raport przedstawiający rodzaje malware, metody ataków i techniki analizy (statyczna/dynamiczna).
 
+- [`Ternary Hash`](./Ternary Hash)  
+  Implementacje **SHA‑1** i **SHA‑256** w Pythonie oraz eksperymentalne **warianty ternarne** (tryty) do celów edukacyjnych i porównawczych — padding, rotacje, harmonogram słów; testy wektorów dla wersji binarnych.
+
 ### 🧠 Backend i systemy informatyczne
 
 - [`System USOS – Python`](./USOS)  
@@ -28,7 +31,10 @@
 - [`Zwirtualizowane środowisko`](./Projekt_Wirtualizacja)  
   Projekt sieciowego środowiska testowego do symulacji i edukacji z zakresu cyberbezpieczeństwa.
 
-### 🤖 Uczenie maszynowe / Sztuczna inteligencaj / Symulacje
+- [`SafeXfer — secure file transfer`](./SafeXfer)  
+  Minimalistyczny system **klient–serwer (C)**: auto‑discovery w LAN (UDP multicast), sesja **TCP (2121)**, własny **protokół TLV**, operacje `ls/rm/get/put` i logowanie z **PBKDF2‑HMAC‑SHA256** (MVP).
+
+### 🤖 Uczenie maszynowe / Sztuczna inteligencja / Symulacje
 
 - [`MountainCar`](./MountainCar)  
   Model fizyki ruchu samochodu w środowisku AI + prezentacja logiczna i wykresy wyników.
@@ -41,9 +47,9 @@
 
 ## 🧰 Technologie
 
-- **Języki:** Python, JavaScript (Node.js), SQL, Bash
+- **Języki:** Python, C/C++, JavaScript (Node.js), SQL, Bash
 - **Bazy danych:** PostgreSQL, MSSQL, SQLite
-- **Sieci i bezpieczeństwo:** Nmap, Wireshark, Metasploit, Snort, Suricata
+- **Sieci i bezpieczeństwo:** Nmap, Wireshark, Snort/Suricata, PBKDF2, TLS/SSL (podstawy)
 - **Systemy operacyjne:** Linux (Ubuntu, Kali), Windows
 - **Narzędzia:** Git, Docker, VirtualBox, Express, MongoDB, Flask
 
@@ -52,6 +58,6 @@
 ## 📬 Kontakt
 
 - **E-mail:** makowskimieszko6@gmail.com  
-- **LinkedIn:** [linkedin.com/in/mieszko-makowski-41ab501b2](https://linkedin.com/in/mieszko-makowski-41ab501b2)
+- **LinkedIn:** https://linkedin.com/in/mieszko-makowski-41ab501b2
 
 *Dziękuję za poświęcony czas i zapraszam do zapoznania się z wybranymi projektami.*
