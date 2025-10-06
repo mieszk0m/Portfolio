@@ -1,77 +1,74 @@
-SafeXfer — secure file transfer (Client–Server, C)
+# SafeXfer — secure file transfer (Client–Server, C)
 
-Minimalistyczny system bezpiecznej wymiany plików w architekturze klient–serwer.
-Obsługuje auto-discovery serwera w LAN (UDP multicast), sesję TCP z logowaniem (PBKDF2-HMAC-SHA256) oraz polecenia: ls, rm <plik>, get <plik>, put <plik>. Sterowanie i transfer w jednym kanale TCP dzięki prostemu protokółowi TLV.
+Minimalistyczny system **bezpiecznej wymiany plików** w architekturze klient–serwer.
+Obsługuje **auto-discovery** serwera w LAN (UDP multicast), sesję **TCP** z logowaniem
+(**PBKDF2-HMAC-SHA256**) oraz komendy: `ls`, `rm <plik>`, `get <plik>`, `put <plik>`.
+Sterowanie i transfer realizowane są jednym połączeniem TCP dzięki prostemu **protokółowi TLV**.
 
-✨ Funkcje (MVP)
+> **Status:** MVP (educational). Brak TLS – do testów w sieci zaufanej/VM.
 
-Auto-discovery (UDP multicast): 224.0.0.251:54321
 
-Sesja TCP (domyślnie port 2121): logowanie + interaktywny CLI
+## ✨ Funkcje
+- **Auto-discovery (UDP multicast)**: klient odnajduje serwer w LAN.
+- **Sesja TCP (2121)**: logowanie + interaktywny CLI klienta.
+- **Operacje na plikach**: `ls`, `rm`, `get`, `put`.
+- **Uwierzytelnianie**: PBKDF2-HMAC-SHA256 (100k iter., sól per użytkownik).
+- **Protokół TLV (Type–Length–Value)**: sterowanie + transfer w jednym kanale.
+- **Walidacja ścieżek**: odrzucanie `..`, `/`, `\` (ochrona przed path traversal).
 
-Operacje na plikach: ls, rm, get, put
 
-Uwierzytelnianie: PBKDF2-HMAC-SHA256 (100k iteracji, sól per użytkownik)
-
-Protokół TLV: sterowanie + transfer w jednym połączeniu TCP
-
-Bezpieczeństwo ścieżek: odrzucanie .., /, \ (ochrona przed path traversal)
-
-🧱 Architektura i repo
+## 🧱 Struktura repozytorium
+```
 /safexfer
-├─ server/         # main.c, SrvCore (sesje TCP + FileEngine), AutoGuard, NetDiscovery, storage/
-├─ client/         # main.c, CLI (logowanie + pętla komend), NetDiscovery probe
-├─ common/         # tlv.c/.h (ramki TLV, readn/writen)
+├─ server/          # serwer: sesje TCP, logowanie, silnik plików, discovery, storage/
+├─ client/          # klient CLI: logowanie, pętla komend, discovery probe
+├─ common/          # tlv.c/.h (ramki TLV, readn/writen, utils)
 └─ Makefile
+```
+
+**Moduły:** `SrvCore`, `FileEngine`, `AutoGuard`, `NetDiscovery`, `CLI-Client`.
 
 
-Moduły: SrvCore, FileEngine, AutoGuard, NetDiscovery, CLI-Client.
-
-🔌 Protokół i porty
-
-Discovery: klient wysyła DISCOVER_SAFEXFER → serwer odpowiada SAFEXFER_SERVER (unicast)
-
-Kanał TCP 2121: po discovery klient zestawia sesję, loguje się i wydaje komendy
-
-TLV (Type-Length-Value)
-
-Nagłówek: 1B type, 2B length (BE), następnie value[length]
-
-Sterujące: 0x01 LOGIN, 0x02 PASSWORD, 0x10 OK, 0x11 ERROR, 0x20 CMD, 0x21 TEXT
-
-Transfer GET: 0x31 FILE_INFO(8B), 0x32 FILE_CHUNK, 0x33 FILE_END
-
-Transfer PUT: 0x51 PUT_CHUNK, 0x52 PUT_END
-
-Domyślny rozmiar value: 4096 B (łatwy do zwiększania)
-
-🛠️ Wymagania i budowanie
-
-Linux (rozwijane na Kali). Wymagane pakiety:
-
-sudo apt update && sudo apt install -y \
-  build-essential gdb valgrind pkg-config make \
-  libsctp-dev lksctp-tools libssl-dev
+## 🔌 Protokół i porty
+- **Discovery (LAN):** klient wysyła `DISCOVER_SAFEXFER` (UDP multicast) → serwer
+  odpowiada `SAFEXFER_SERVER` (unicast z IP/portem).
+- **Kanał TCP 2121:** po discovery klient zestawia sesję, loguje się i wydaje komendy.
+- **TLV (Type–Length–Value)**  
+  - Nagłówek: `1B type`, `2B length (big-endian)`, następnie `value[length]`  
+  - Sterujące: `0x01 LOGIN`, `0x02 PASSWORD`, `0x10 OK`, `0x11 ERROR`, `0x20 CMD`, `0x21 TEXT`  
+  - Transfer GET: `0x31 FILE_INFO(8B)`, `0x32 FILE_CHUNK`, `0x33 FILE_END`  
+  - Transfer PUT: `0x51 PUT_CHUNK`, `0x52 PUT_END`  
+  - Domyślny rozmiar value: **4096 B** (łatwy do zwiększania).
 
 
-Budowanie:
+## 🛠️ Wymagania
+**Linux** (rozwijane i testowane m.in. na Kali/Ubuntu). Wymagane pakiety:
+```bash
+sudo apt update && sudo apt install -y   build-essential gdb valgrind pkg-config make   libsctp-dev lksctp-tools libssl-dev
+```
 
+
+## ⚙️ Budowanie
+```bash
 make clean && make
+```
 
 
-Uruchomienie – 2 terminale:
-
-# Terminal 1 – serwer:
+## ▶️ Uruchomienie (dwa terminale)
+**Terminal 1 – serwer:**
+```bash
 ./server/server
-# nasłuch: UDP 224.0.0.251:54321 (discovery), TCP 2121 (sesja)
+# nasłuch: UDP multicast (discovery), TCP 2121 (sesja)
+```
 
-# Terminal 2 – klient:
+**Terminal 2 – klient:**
+```bash
 ./client/client
-# po discovery: login/hasło → interaktywny prompt SafeXfer>
+# po discovery: logowanie → interaktywny prompt SafeXfer>
+```
 
-
-Przykładowa sesja:
-
+**Przykład sesji:**
+```
 Znaleziono serwer SafeXfer pod IP: 192.168.1.18
 Login: admin
 Hasło: ******
@@ -84,45 +81,38 @@ SafeXfer> get raport.txt
 Pobrano raport.txt (1024/1024)
 SafeXfer> rm raport.txt
 OK
+```
 
 
-🔐 Bezpieczeństwo (stan MVP)
-
-Zaimplementowane
-
-PBKDF2-HMAC-SHA256 (100k, sól per user)
-
-Parsowanie TLV (binarnie; brak evala tekstu)
-
-Walidacja nazw plików (ochrona przed traversal)
-
-Ryzyka/ograniczenia
-
-Brak TLS (LAN/laby – dane idą jawnie)
-
-Brak rate-limit/lockout
-
-Serwer jednowątkowy (blokuje się przy długich transferach)
-
-🧭 Roadmap (prace dalsze)
-
-Tryb demona + logowanie do syslog
-
-Równoległość: fork/pthreads/epoll
-
-TLS (OpenSSL) dla kanału TCP
-
-SCTP 9899 (multi-stream) dla równoległego transferu wielu plików
-
-Sumy kontrolne (SHA-256) po transferze, rate-limit/lockout, dziennik audytu
+## 👤 Konta i repo serwera
+- Format kont: `login:salt_hex:pbkdf2_hex` (plik `server/accounts.txt`).
+- Repo plików serwera: `server/storage/` (tworzone automatycznie).
 
 
-📋 Konta i repozytorium plików
+## 🔐 Bezpieczeństwo (MVP)
+**Zaimplementowane**
+- PBKDF2-HMAC-SHA256 (100k, sól użytkownika).
+- Parsowanie binarne TLV (bez evala tekstu).
+- Walidacja nazw plików (ochrona przed traversal).
 
-Format kont: login:salt_hex:pbkdf2_hex (plik server/accounts.txt)
+**Ryzyka/Ograniczenia**
+- Brak **TLS** (LAN/laby – dane idą jawnie).
+- Brak rate-limit/lockout.
+- Serwer **jednowątkowy** (blokady przy długich transferach).
 
-Repo plików serwera: server/storage/ (tworzone automatycznie)
 
-⚖️ Licencja
+## 🧭 Roadmap
+- Tryb **demona** + logowanie do **syslog**.
+- **Równoległość**: fork/pthreads/epoll.
+- **TLS (OpenSSL)** na kanale TCP.
+- **SCTP 9899 (multi-stream)** dla wielu plików równolegle.
+- **Sumy kontrolne** (SHA-256) po transferze, **rate-limit/lockout**, dziennik audytu.
 
+
+## 🧪 Testy / debug
+- `valgrind` (wycieki), `gdb` (awarie), testy integracyjne CLI (skrypty bash).
+- Dla protokołu TLV: testy jednostkowe parsera (`common/tlv.c`).
+
+
+## 📜 Licencja
 Wstaw preferowaną licencję (np. MIT/BSD-2-Clause).
